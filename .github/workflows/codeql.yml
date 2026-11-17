@@ -34,6 +34,7 @@ jobs:
 
   test:
     name: Unit tests (Jest)
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -53,6 +54,7 @@ jobs:
 
 
   analyze:
+    needs: [ lint, test ]
     name: Analyze (${{ matrix.language }})
     runs-on: ubuntu-latest
     permissions:
